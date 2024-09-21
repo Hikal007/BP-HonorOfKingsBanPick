@@ -1,0 +1,653 @@
+.overlay {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(rgb(233, 225, 225), white);
+    padding: 5px;
+    box-shadow: 0 0 5px rgba(199, 167, 167, 0.3);
+    text-align: center;
+    border-radius: 45px;
+    z-index: 9999;
+}
+.overlay p {
+    margin: 0;
+    font-size: 55px; 
+    color: rgba(57, 47, 47, 0.924); 
+}
+.image-BAN {
+    position: relative;
+    opacity: 0;
+    transform: scale(-3);
+    transition: opacity 0.5s ease-in-out, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.image-BAN.show {
+    opacity: 1;
+    transform: scale(1);
+}
+.image-PICK {
+    position: relative;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.5s ease-in-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+.image-PICK.show {
+opacity: 1;
+transform: translateY(0);
+}
+.image-PICK2 {
+    position: relative;
+    opacity: 0;
+    transform: translateY(100%) scaleX(-1);
+    transition: opacity 0.5s ease-in-out, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) ;
+  }
+.image-PICK2.show {
+opacity: 1;
+transform: translateY(0) scaleX(-1);
+}
+body {
+    overflow: hidden;
+}
+#video-background,#bpbackground,#bpbackground2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+#video-background{
+    z-index: -1;
+}
+#bpbackground{
+    z-index: 0;
+}
+#bpbackground2{
+    z-index: 2;
+}
+#FullScreen {
+    position: absolute;
+    width: 1.0rem;
+    height: 0.2rem;
+    right: 3.0rem;
+    bottom: 4.4rem;
+    font-size: 0.10rem;
+    z-index: 6;
+}
+#team1,#team2 {
+    position: absolute;
+    text-align: center;
+    width: 8cm;
+    bottom: 1.2rem;
+    font-size: 0.2rem;
+    color: aliceblue;
+    z-index: 20;
+}
+#team1 {
+    left: 3rem;
+    transform-origin: left bottom;
+}
+#team2 {
+    right: 3rem;
+    transform-origin: right bottom;
+}
+
+#team1player1,#team1player2,#team1player3,#team1player4,#team1player5 {
+    position: absolute;
+    text-align: center;
+    width: 3.8cm;
+    bottom: -0.04rem;
+    font-size: 0.1rem;
+    color: aliceblue;
+    z-index: 20;
+    transform-origin: left bottom;
+}
+#team2player6,#team2player7,#team2player8,#team2player9,#team2player10 {
+    position: absolute;
+    text-align: center;
+    width: 3.8cm;
+    bottom: -0.04rem;
+    font-size: 0.1rem;
+    color: aliceblue;
+    z-index: 20;
+    transform-origin: right bottom;
+}
+
+#LeftButtomChangeLeft,#LeftButtomChangeRight,#RightButtomChangeLeft,#RightButtomChangeRight {
+    position: absolute;
+    width: 0.2rem;
+    height: 0.5rem;
+    font-size: 0.1rem;
+    z-index: 22;
+}
+
+#TeamChangeInput1,#TeamChangeInput2 {
+    position: absolute;
+    text-align: center;
+    width: 0.7rem;
+    bottom: 4.42rem;
+    font-size: 0.1rem;
+    color: black;
+    z-index: 21;
+    transform-origin: center top;
+}
+
+#PlayerChangeInput1,#PlayerChangeInput2,#PlayerChangeInput3,#PlayerChangeInput4,#PlayerChangeInput5,#PlayerChangeInput6,#PlayerChangeInput7,#PlayerChangeInput8,#PlayerChangeInput9,#PlayerChangeInput10 {
+    position: absolute;
+    text-align: center;
+    width: 0.5rem;
+    font-size: 0.1rem;
+    color: black;
+    z-index: 21;
+    transform-origin: center top;
+}
+
+#emptyenter {
+    position: absolute;
+    text-align: center;
+    width: 1.55rem;
+    font-size: 0.1rem;
+    color: black;
+    z-index: 21;
+    transform-origin: center top;
+}
+
+#ScoreTeam1,#ScoreTeam2 {
+    position: absolute;
+    text-align: center;
+    width: 0.5rem;
+    height: 0.2rem;
+    bottom: 4.2rem;
+    font-size: 0.1rem;
+    z-index: 9;
+}
+#ScoreReplaceTeam1 {
+    position: absolute;
+    width: 2px;
+    left: 4.73rem;
+    bottom: 1.15rem;
+    z-index: 11;
+}
+#ScoreReplaceTeam2 {
+    position: absolute;
+    width: 2px;
+    left: 5.07rem;
+    bottom: 1.15rem;
+    z-index: 11;
+}
+#bifenplace img {
+    width: 0.2rem;
+    z-index: 11;
+}
+#bifenplace2 img {
+    width: 0.2rem;
+    z-index: 11;
+}
+
+#BanList {
+    position: absolute;
+    text-align: center;
+    width: 0.5rem;
+    height: 0.25rem;
+    left: 0.3rem;
+    bottom: 5.2rem;
+    font-size: 0.1rem;
+    z-index: 5;
+}
+
+#ban1btn,#ban2btn,#ban3btn,#ban4btn,#ban5btn,#ban6btn,#ban7btn,#ban8btn {
+    position: absolute;
+    width: 0.25rem;
+    height: 0.35rem;
+    bottom: 5.2rem;
+    font-size: 0.12rem;
+    z-index: 5;
+    display: none;
+}
+
+#ban1sure,#ban2sure,#ban3sure,#ban4sure,#ban5sure,#ban6sure,#ban7sure,#ban8sure {
+    position: absolute;
+    width: 0.25rem;
+    height: 0.15rem;
+    bottom: 5.05rem;
+    font-size: 0.12rem;
+    z-index: 5;
+    display: none;
+}
+
+#ban1place img,#ban1sureplace img {
+    width: 0.39rem;
+    position: absolute;
+    left: 0.13rem;
+    bottom: 1.34rem;
+}
+#ban2place img,#ban2sureplace img  {
+    width: 0.39rem;
+    position: absolute;
+    left: 0.61rem;
+    bottom: 1.34rem;
+}
+#ban3place img,#ban3sureplace img  {
+    width: 0.39rem;
+    position: absolute;
+    left: 1.09rem;
+    bottom: 1.34rem;
+}
+#ban4place img,#ban4sureplace img  {
+    width: 0.39rem;
+    position: absolute;
+    left: 1.57rem;
+    bottom: 1.34rem;
+}
+#ban5place img,#ban5sureplace img  {
+    width: 0.39rem;
+    position: absolute;
+    right: 1.58rem;
+    bottom: 1.34rem;
+}
+#ban6place img,#ban6sureplace img  {
+    width: 0.39rem;
+    position: absolute;
+    right: 1.10rem;
+    bottom: 1.34rem;
+}
+#ban7place img,#ban7sureplace img  {
+    width: 0.39rem;
+    position: absolute;
+    right: 0.62rem;
+    bottom: 1.34rem;
+}
+#ban8place img,#ban8sureplace img  {
+    width: 0.39rem;
+    position: absolute;
+    right: 0.14rem;
+    bottom: 1.34rem;
+}
+
+#BanSelectName {
+    position: absolute;
+    text-align: center;
+    width: 0.8rem;
+    height: 0.25rem;
+    left: 0.8rem;
+    bottom: 5.2rem;
+    font-size: 0.12rem;
+    z-index: 5;
+}
+
+#PickHeroList {
+    position: absolute;
+    text-align: center;
+    width: 0.5rem;
+    height: 0.25rem;
+    left: 0.3rem;
+    bottom: 4.6rem;
+    font-size: 0.1rem;
+    z-index: 5;
+}
+
+#PickHeroName {
+    position: absolute;
+    text-align: center;
+    width: 0.8rem;
+    height: 0.25rem;
+    left: 0.8rem;
+    bottom: 4.6rem;
+    font-size: 0.12rem;
+    z-index: 5;
+}
+
+#pick1btn,#pick2btn,#pick3btn,#pick4btn,#pick5btn,#pick6btn,#pick7btn,#pick8btn,#pick9btn,#pick10btn {
+    position: absolute;
+    width: 0.25rem;
+    height: 0.35rem;
+    bottom: 4.6rem;
+    font-size: 0.12rem;
+    z-index: 5;
+    display: none;
+
+}
+
+#pick1sure {
+    position: absolute;
+    width: 0.25rem;
+    height: 0.15rem;
+    left: 1.6rem;
+    bottom: 4.45rem;
+    font-size: 0.12rem;
+    z-index: 5;
+    display: none;
+}
+#pick2sure {
+    position: absolute;
+    width: 0.5rem;
+    height: 0.15rem;
+    left: 1.85rem;
+    bottom: 4.45rem;
+    font-size: 0.12rem;
+    z-index: 5;
+    display: none;
+}
+#pick3sure {
+    position: absolute;
+    width: 0.5rem;
+    height: 0.15rem;
+    left: 2.35rem;
+    bottom: 4.45rem;
+    font-size: 0.12rem;
+    z-index: 5;
+    display: none;
+}
+#pick4sure {
+    position: absolute;
+    width: 0.25rem;
+    height: 0.15rem;
+    left: 2.85rem;
+    bottom: 4.45rem;
+    font-size: 0.12rem;
+    z-index: 5;
+    display: none;
+}
+#pick5sure {
+    position: absolute;
+    width: 0.25rem;
+    height: 0.15rem;
+    left: 3.10rem;
+    bottom: 4.45rem;
+    font-size: 0.12rem;
+    z-index: 5;
+    display: none;
+}
+#pick6sure {
+    position: absolute;
+    width: 0.5rem;
+    height: 0.15rem;
+    left: 3.35rem;
+    bottom: 4.45rem;
+    font-size: 0.12rem;
+    z-index: 5;
+    display: none;
+}
+#pick7sure {
+    position: absolute;
+    width: 0.25rem;
+    height: 0.15rem;
+    left: 3.85rem;
+    bottom: 4.45rem;
+    font-size: 0.12rem;
+    z-index: 5;
+    display: none;
+}
+/* #pick8sure,#pick9sure,#pick10sure {
+    position: absolute;
+    width: 0.25rem;
+    height: 0.15rem;
+    bottom: 4.45rem;
+    font-size: 0.12rem;
+    z-index: 5;
+} */
+
+#pick1place img,#pick1sureplace img {
+    width: 0.83rem;
+    position: absolute;
+    left: 0.00rem;
+    bottom: -0.005rem;
+}
+#pick2place img,#pick2sureplace img {
+    width: 0.83rem;
+    position: absolute;
+    left: 0.875rem;
+    bottom: -0.005rem;
+}
+#pick3place img,#pick3sureplace img {
+    width: 0.83rem;
+    position: absolute;
+    left: 1.750rem;
+    bottom: -0.005rem;
+}
+#pick4place img,#pick4sureplace img {
+    width: 0.83rem;
+    position: absolute;
+    left: 2.625rem;
+    bottom: -0.005rem;
+}
+#pick5place img,#pick5sureplace img {
+    width: 0.83rem;
+    position: absolute;
+    left: 3.5rem;
+    bottom: -0.005rem;
+}
+#pick6place img,#pick6sureplace img {
+    width: 0.83rem;
+    position: absolute;
+    right: 3.5rem;
+    bottom: -0.005rem;
+}
+#pick7place img,#pick7sureplace img {
+    width: 0.83rem;
+    position: absolute;
+    right: 2.625rem;
+    bottom: -0.005rem;
+}
+#pick8place img,#pick8sureplace img {
+    width: 0.83rem;
+    position: absolute;
+    right: 1.750rem;
+    bottom: -0.005rem;
+}
+#pick9place img,#pick9sureplace img {
+    width: 0.83rem;
+    position: absolute;
+    right: 0.875rem;
+    bottom: -0.005rem;
+}
+#pick10place img,#pick10sureplace img {
+    width: 0.83rem;
+    position: absolute;
+    right: 0.00rem;
+    bottom: -0.005rem;
+}
+
+#startButton {
+    position: absolute;
+    width: 1rem;
+    right: 3rem;
+    height: 0.2rem;
+    bottom: 4rem;
+    font-size: 0.1rem;
+    z-index: 5;
+}
+#resetbp {
+    position: absolute;
+    width: 1rem;
+    right: 3rem;
+    height: 0.2rem;
+    bottom: 3.8rem;
+    font-size: 0.1rem;
+    z-index: 5;
+}
+
+#countdownDisplayContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+#countdownDisplay {
+    position: absolute;
+    text-align: center;
+    display: flex;
+    left: 4.7rem;
+    bottom: 0.6rem;
+    font-size: 0.5rem;
+    z-index: 5;
+    color: #ffffff;
+}
+@keyframes countdownAnimation {
+    0% { color: red; }
+    50% { color: white; }
+    100% { color: white; }
+}
+.flashing {
+    animation: countdownAnimation 1s infinite;
+}
+
+#changehero {
+    text-align: center;
+    position: absolute;
+    width: 0.6rem;
+    left: 0.3rem;
+    height: 0.2rem;
+    bottom: 3.5rem;
+    font-size: 0.1rem;
+    z-index: 5;
+}
+#changehero2 {
+    text-align: center;
+    position: absolute;
+    width: 0.6rem;
+    left: 0.9rem;
+    height: 0.2rem;
+    bottom: 3.5rem;
+    font-size: 0.1rem;
+    z-index: 5;
+}
+#changehero3 {
+    text-align: center;
+    position: absolute;
+    width: 0.6rem;
+    left: 2.3rem;
+    height: 0.2rem;
+    bottom: 3.5rem;
+    font-size: 0.1rem;
+    z-index: 5;
+}
+#changehero4 {
+    text-align: center;
+    position: absolute;
+    width: 0.6rem;
+    left: 2.9rem;
+    height: 0.2rem;
+    bottom: 3.5rem;
+    font-size: 0.1rem;
+    z-index: 5;
+}
+#HeroChangeSurebtn {
+    text-align: center;
+    position: absolute;
+    width: 0.6rem;
+    left: 1.5rem;
+    height: 0.2rem;
+    bottom: 3.5rem;
+    font-size: 0.1rem;
+    z-index: 5;
+}
+
+#TheSkills {
+    position: absolute;
+    text-align: center;
+    width: 0.5rem;
+    height: 0.25rem;
+    left: 0.3rem;
+    bottom: 4.0rem;
+    font-size: 0.1rem;
+    z-index: 5;
+}
+
+#TheSkillsName {
+    position: absolute;
+    text-align: center;
+    width: 0.8rem;
+    height: 0.25rem;
+    left: 0.8rem;
+    bottom: 4.0rem;
+    font-size: 0.12rem;
+    z-index: 5;
+}
+
+#skill1btn,#skill2btn,#skill3btn,#skill4btn,#skill5btn,#skill6btn,#skill7btn,#skill8btn,#skill9btn,#skill10btn {
+    position: absolute;
+    width: 0.25rem;
+    height: 0.35rem;
+    bottom: 4.0rem;
+    font-size: 0.12rem;
+    z-index: 5;
+    display: none;
+}
+
+#skill1place img{
+    width: 0.25rem;
+    position: absolute;
+    left: 0.03rem;
+    bottom: 1rem;
+    z-index: 10;
+}
+#skill2place img{
+    width: 0.25rem;
+    position: absolute;
+    left: 0.90rem;
+    bottom: 1rem;
+    z-index: 10;
+}
+#skill3place img{
+    width: 0.25rem;
+    position: absolute;
+    left: 1.77rem;
+    bottom: 1rem;
+    z-index: 10;
+}
+#skill4place img{
+    width: 0.25rem;
+    position: absolute;
+    left: 2.64rem;
+    bottom: 1rem;
+    z-index: 10;
+}
+#skill5place img{
+    width: 0.25rem;
+    position: absolute;
+    left: 3.51rem;
+    bottom: 1rem;
+    z-index: 10;
+}
+#skill6place img{
+    width: 0.25rem;
+    position: absolute;
+    right: 4.04rem;
+    bottom: 1rem;
+    z-index: 10;
+}
+#skill7place img{
+    width: 0.25rem;
+    position: absolute;
+    right: 3.17rem;
+    bottom: 1rem;
+    z-index: 10;
+}
+#skill8place img{
+    width: 0.25rem;
+    position: absolute;
+    right: 2.30rem;
+    bottom: 1rem;
+    z-index: 10;
+}
+#skill9place img{
+    width: 0.25rem;
+    position: absolute;
+    right: 1.43rem;
+    bottom: 1rem;
+    z-index: 10;
+}
+#skill10place img{
+    width: 0.25rem;
+    position: absolute;
+    right: 0.56rem;
+    bottom: 1rem;
+    z-index: 10;
+}
+#result {
+    display: none;
+}

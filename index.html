@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BanPick by Hikal007</title>
+    <!-- 链接css -->
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/JavaScript.js"></script>
+
+</head>
+
+<body>
+    <!-- 背景 -->
+    <video autoplay muted loop id="video-background">
+        <source src="./videos/dragon.mp4" type="video/mp4">
+    </video>
+    <img id="bpbackground" src="./imgs/bpbackground.png">
+    <img id="bpbackground2" src="./imgs/bpbackground2.png">
+    <!-- 玩家与团队 -->
+    <div>
+    <p id="team1" contenteditable="true">TEAM1</p>
+    <p id="team2" contenteditable="true">TEAM2</p>
+    </div>
+    <div>
+        <p id="team1player1" contenteditable="true" style="left: 0.04rem;">PLAYER1</p>
+        <p id="team1player2" contenteditable="true" style="left: 0.91rem;">PLAYER2</p>
+        <p id="team1player3" contenteditable="true" style="left: 1.79rem;">PLAYER3</p>
+        <p id="team1player4" contenteditable="true" style="left: 2.66rem;">PLAYER4</p>
+        <p id="team1player5" contenteditable="true" style="left: 3.54rem;">PLAYER5</p>
+    </div>
+    <div>
+        <p id="team2player6" contenteditable="true" style="right: 3.54rem;">PLAYER10</p>
+        <p id="team2player7" contenteditable="true" style="right: 2.67rem;">PLAYER9</p>
+        <p id="team2player8" contenteditable="true" style="right: 1.79rem;">PLAYER8</p>
+        <p id="team2player9" contenteditable="true" style="right: 0.91rem;">PLAYER7</p>
+        <p id="team2player10" contenteditable="true" style="right: 0.03rem;">PLAYER6</p>
+    </div>
+    <!--  控制面板 -->
+    <div>
+        <input id="TeamChangeInput1" type="text" placeholder="TEAM 1" style="left: 4.19rem;">
+        <input id="TeamChangeInput2" type="text" placeholder="TEAM 2" style="left: 4.99rem;">
+        <input id="PlayerChangeInput1" type="text" placeholder="PLAYER1" style="left: 4.39rem; bottom: 4.22rem;">
+        <input id="PlayerChangeInput2" type="text" placeholder="PLAYER2" style="left: 4.39rem; bottom: 4.02rem;">
+        <input id="PlayerChangeInput3" type="text" placeholder="PLAYER3" style="left: 4.39rem; bottom: 3.82rem;">   
+        <input id="PlayerChangeInput4" type="text" placeholder="PLAYER4" style="left: 4.39rem; bottom: 3.62rem;">
+        <input id="PlayerChangeInput5" type="text" placeholder="PLAYER5" style="left: 4.39rem; bottom: 3.42rem;">
+        <input id="PlayerChangeInput10" type="text" placeholder="PLAYER6" style="left: 4.99rem; bottom: 4.22rem;">
+        <input id="PlayerChangeInput9" type="text" placeholder="PLAYER7" style="left: 4.99rem; bottom: 4.02rem;">
+        <input id="PlayerChangeInput8" type="text" placeholder="PLAYER8" style="left: 4.99rem; bottom: 3.82rem;">   
+        <input id="PlayerChangeInput7" type="text" placeholder="PLAYER9" style="left: 4.99rem; bottom: 3.62rem;">
+        <input id="PlayerChangeInput6" type="text" placeholder="PLAYER10" style="left: 4.99rem; bottom: 3.42rem;">
+        <input id="emptyenter" type="text" placeholder="这里可以随便粘贴文字" style="left: 4.16rem; bottom: 3.22rem;">
+        <button id="LeftButtomChangeLeft" onclick="LeftButtomChangeLeft()" style="left: 4.16rem; bottom: 3.9rem;">左</button>
+        <button id="LeftButtomChangeRight" onclick="LeftButtomChangeRight()" style="left: 4.16rem; bottom: 3.4rem;">右</button>
+        <button id="RightButtomChangeLeft" onclick="RightButtomChangeLeft()" style="left: 5.56rem; bottom: 3.9rem;">左</button>
+        <button id="RightButtomChangeRight" onclick="RightButtomChangeRight()" style="left: 5.56rem; bottom: 3.4rem;">右</button>
+    </div>
+    <div>
+        <button id="FullScreen" onclick="fullscreen()">(1) 全屏BanPick</button>
+        <div id="ScoreReplaceTeam1"></div>
+        <select id="ScoreTeam1" style="right: 3rem;">
+            <option value="">(2) 比分</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <div id="ScoreReplaceTeam2"></div>
+        <select id="ScoreTeam2" style="right: 3.5rem;">
+            <option value="">(2) 比分</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        <button id="startButton" onclick="showImage1()">(3) BanPick开始</button>
+        <button id="resetbp" onclick="resetbp()">(4) 重置</button>
+        <div id="countdownDisplay"></div>
+    </div>
+
+    <div>   <!--BAN-->
+        <select id="BanList">
+            <option value="">首字母</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="H">H</option>
+            <option value="I">I</option>
+            <option value="J">J</option>
+            <option value="K">K</option>
+            <option value="L">L</option>
+            <option value="M">M</option>
+            <option value="N">N</option>
+            <option value="O">O</option>
+            <option value="P">P</option>
+            <option value="Q">Q</option>
+            <option value="R">R</option>
+            <option value="S">S</option>
+            <option value="T">T</option>
+            <option value="U">U</option>
+            <option value="V">V</option>
+            <option value="W">W</option>
+            <option value="X">X</option>
+            <option value="Y">Y</option>
+            <option value="Z">Z</option>
+        </select>
+        <select id="BanSelectName">
+            <option value="">BAN</option>
+        </select>
+
+        <button id="ban1btn" style="left: 1.6rem;" onclick="showImage1()">1 B1</button>
+        <button id="ban8btn" style="left: 1.85rem;" onclick="showImage8()">2 B8</button>
+        <button id="ban2btn" style="left: 2.1rem;" onclick="showImage2()">3 B2</button>
+        <button id="ban7btn" style="left: 2.35rem;" onclick="showImage7()">4 B7</button>
+        <button id="ban3btn" style="left: 2.6rem;" onclick="showImage6()">5 B3</button>
+        <button id="ban6btn" style="left: 2.85rem;" onclick="showImage3()">6 B6</button>
+        <button id="ban4btn" style="left: 3.1rem;" onclick="showImage5()">7 B4</button>
+        <button id="ban5btn" style="left: 3.35rem;" onclick="showImage4()">8 B5</button>
+
+        <button id="ban1sure" style="left: 1.6rem;" onclick="SureBan1()">√</button>
+        <button id="ban8sure" style="left: 1.85rem;" onclick="SureBan8()">√</button>
+        <button id="ban2sure" style="left: 2.1rem;" onclick="SureBan2()">√</button>
+        <button id="ban7sure" style="left: 2.35rem;" onclick="SureBan7()">√</button>
+        <button id="ban3sure" style="left: 2.6rem;" onclick="SureBan6()">√</button>
+        <button id="ban6sure" style="left: 2.85rem;" onclick="SureBan3()">√</button>
+        <button id="ban4sure" style="left: 3.1rem;" onclick="SureBan5()">√</button>
+        <button id="ban5sure" style="left: 3.35rem;" onclick="SureBan4()">√</button>
+        
+        <div id="ban1place"></div>
+        <div id="ban2place"></div>
+        <div id="ban3place"></div>
+        <div id="ban4place"></div>
+        <div id="ban5place"></div>
+        <div id="ban6place"></div>
+        <div id="ban7place"></div>
+        <div id="ban8place"></div>
+
+        <div id="ban1sureplace"></div>
+        <div id="ban2sureplace"></div>
+        <div id="ban3sureplace"></div>
+        <div id="ban4sureplace"></div>
+        <div id="ban5sureplace"></div>
+        <div id="ban6sureplace"></div>
+        <div id="ban7sureplace"></div>
+        <div id="ban8sureplace"></div>
+
+    </div>
+
+    <div>   <!--PICK-->
+        <select id="PickHeroList"> 
+            <option value="">首字母</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="H">H</option>
+            <option value="I">I</option>
+            <option value="J">J</option>
+            <option value="K">K</option>
+            <option value="L">L</option>
+            <option value="M">M</option>
+            <option value="N">N</option>
+            <option value="O">O</option>
+            <option value="P">P</option>
+            <option value="Q">Q</option>
+            <option value="R">R</option>
+            <option value="S">S</option>
+            <option value="T">T</option>
+            <option value="U">U</option>
+            <option value="V">V</option>
+            <option value="W">W</option>
+            <option value="X">X</option>
+            <option value="Y">Y</option>
+            <option value="Z">Z</option>
+        </select>
+        <select id="PickHeroName">
+            <option value="">PICK</option>
+        </select>
+
+        <button id="pick1btn" style="left: 1.6rem;" onclick="Player1PickHero()">1 P1</button>
+        <button id="pick2btn" style="left: 1.85rem;" onclick="Player10PickHero()">2 P6</button>
+        <button id="pick3btn" style="left: 2.1rem;" onclick="Player9PickHero()">3 P7</button>
+        <button id="pick4btn" style="left: 2.35rem;" onclick="Player2PickHero()">4 P2</button>
+        <button id="pick5btn" style="left: 2.6rem;" onclick="Player3PickHero()">5 P3</button>
+        <button id="pick6btn" style="left: 2.85rem;" onclick="Player8PickHero()">6 P8</button>
+        <button id="pick7btn" style="left: 3.1rem;" onclick="Player7PickHero()">7 P9</button>
+        <button id="pick8btn" style="left: 3.35rem;" onclick="Player4PickHero()">8 P4</button>
+        <button id="pick9btn" style="left: 3.60rem;" onclick="Player5PickHero()">9 P5</button>
+        <button id="pick10btn" style="left: 3.85rem;" onclick="Player6PickHero()">10 P10</button>
+
+        <button id="pick1sure" onclick="Player1Skill2()">√</button>
+        <button id="pick2sure" onclick="Player9Skill2(),Player10Skill2()">√</button>
+        <button id="pick3sure" onclick="Player2Skill2(),Player3Skill2()">√</button>
+        <button id="pick4sure" onclick="Player8Skill2()">√</button>
+        <button id="pick5sure" onclick="Player7Skill2()">√</button>
+        <button id="pick6sure" onclick="Player4Skill2(),Player5Skill2()">√</button>
+        <button id="pick7sure" onclick="Player6Skill2()">√</button>
+        <!-- <button id="pick8sure" style="left: 3.35rem;" onclick="Player5Skill2()">√</button>
+        <button id="pick9sure" style="left: 3.60rem;" onclick="Player7Skill2()">√</button>
+        <button id="pick10sure" style="left: 3.85rem;" onclick="Player6Skill2()">√</button> -->
+
+        <div id="pick1place"></div>
+        <div id="pick2place"></div>
+        <div id="pick3place"></div>
+        <div id="pick4place"></div>
+        <div id="pick5place"></div>
+        <div id="pick6place"></div>
+        <div id="pick7place"></div>
+        <div id="pick8place"></div>
+        <div id="pick9place"></div>
+        <div id="pick10place"></div>
+
+    </div>
+
+    <div>    <!-- 交换英雄 -->
+        <select id="changehero">
+            <option value="">CHANGE1</option>
+            <option value="P1">P1</option>
+            <option value="P2">P2</option>
+            <option value="P3">P3</option>
+            <option value="P4">P4</option>
+            <option value="P5">P5</option>
+        </select>
+        <select id="changehero2">
+            <option value="">CHANGE2</option>
+            <option value="P1">P1</option>
+            <option value="P2">P2</option>
+            <option value="P3">P3</option>
+            <option value="P4">P4</option>
+            <option value="P5">P5</option>
+        </select>
+
+        <select id="changehero3">
+            <option value="">CHANGE1</option>
+            <option value="P6">P6</option>
+            <option value="P7">P7</option>
+            <option value="P8">P8</option>
+            <option value="P9">P9</option>
+            <option value="P10">P10</option>
+        </select>
+        <select id="changehero4">
+            <option value="">CHANGE2</option>
+            <option value="P6">P6</option>
+            <option value="P7">P7</option>
+            <option value="P8">P8</option>
+            <option value="P9">P9</option>
+            <option value="P10">P10</option>
+        </select>
+
+        <div id="result"></div>
+        <button id="HeroChangeSurebtn" onclick="ChangeSrue()">确定交换</button>
+        </div>
+        <button id="HeroChangeSurebtn" onclick="ChangeSrue2()" style="left: 3.5rem;">确定交换</button>
+        </div>
+
+    <div>
+        <select id="TheSkills">
+            <option value="">请选择</option>
+            <option value="skills">skills</option>
+        </select>
+        <select id="TheSkillsName">
+            <option value="">SKILLS</option>
+        </select>
+
+        <button id="skill1btn" style="left: 1.6rem;" onclick="Player1Skill()">1 P1</button>
+        <button id="skill2btn" style="left: 1.85rem;" onclick="Player2Skill()">2 P2</button>
+        <button id="skill3btn" style="left: 2.1rem;" onclick="Player3Skill()">3 P3</button>
+        <button id="skill4btn" style="left: 2.35rem;" onclick="Player4Skill()">4 P4</button>
+        <button id="skill5btn" style="left: 2.6rem;" onclick="Player5Skill()">5 P5</button>
+        <button id="skill6btn" style="left: 2.85rem;" onclick="Player6Skill()">6 P10</button>
+        <button id="skill7btn" style="left: 3.1rem;" onclick="Player7Skill()">7 P9</button>
+        <button id="skill8btn" style="left: 3.35rem;" onclick="Player8Skill()">8 P8</button>
+        <button id="skill9btn" style="left: 3.60rem;" onclick="Player9Skill()">9 P7</button>
+        <button id="skill10btn" style="left: 3.85rem;" onclick="Player10Skill()">10 P6</button>
+
+        <div id="skill1place"></div>
+        <div id="skill2place"></div>
+        <div id="skill3place"></div>
+        <div id="skill4place"></div>
+        <div id="skill5place"></div>
+        <div id="skill6place"></div>
+        <div id="skill7place"></div>
+        <div id="skill8place"></div>
+        <div id="skill9place"></div>
+        <div id="skill10place"></div>
+
+    </div>
+</body>
+
+</html>
